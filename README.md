@@ -12,7 +12,7 @@ $ npm install --save node-banner
 const showBanner = require('node-banner');
 
 (async () => {
-	await showBanner('Title', 'Tagline');
+	await showBanner('The Title', 'This is a suitable tagline');
 })();
 
 ```

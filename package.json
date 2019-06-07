@@ -11,7 +11,14 @@
     "type": "git",
     "url": "git+https://github.com/jamesgeorge007/node-banner.git"
   },
-  "keywords": [],
+  "keywords": [
+    "banner",
+    "nodejs",
+    "ascii",
+    "art",
+    "javascript",
+    "cli-library"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
