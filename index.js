@@ -1,24 +1,20 @@
 'use strict';
 
 const {promisify} = require('util');
-const fs = require('fs');
-const path = require('path');
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
+const readPkgUp = require('read-pkg-up');
 
 const printTitle = promisify(figlet);
 
-const fallBackCheck = (text, field) => {
-	const pJSON = JSON.parse(
-		fs.readFileSync(path.resolve(process.cwd(), 'package.json')).toString()
-	);
-
+const fallBackCheck = async (text, field) => {
+	const {package: pkg} = await readPkgUp({cwd: __dirname});
 	if (
 		(typeof text === 'undefined' || typeof text !== 'string' || text === '') &&
-		Object.prototype.hasOwnProperty.call(pJSON, field)
+		Object.prototype.hasOwnProperty.call(pkg, field)
 	) {
-		text = pJSON[field];
+		text = pkg[field];
 	}
 
 	return text;
@@ -27,8 +23,22 @@ const fallBackCheck = (text, field) => {
 const showBanner = async (title, tagLine) => {
 	clear();
 
-	title = fallBackCheck(title, 'name');
-	tagLine = fallBackCheck(tagLine, 'description');
+	title = await fallBackCheck(title, 'name');
+	tagLine = await fallBackCheck(tagLine, 'description');
+
+	if (title === title.toLowerCase()) {
+		const index = title.indexOf('-');
+
+		if (!index === -1) {
+			title =
+				title.charAt(0).toUpperCase() +
+				title.substr(1, index - 1) +
+				' ' +
+				title.substr(index + 1, title.length).toUpperCase();
+		} else {
+			title = title.charAt(0).toUpperCase() + title.substr(1, title.length);
+		}
+	}
 
 	try {
 		const data = await printTitle(title);

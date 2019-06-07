@@ -32,6 +32,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
-    "figlet": "^1.2.3"
+    "figlet": "^1.2.3",
+    "read-pkg-up": "^6.0.0"
   }
 }
