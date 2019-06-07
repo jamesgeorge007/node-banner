@@ -1,6 +1,6 @@
 {
   "name": "node-banner",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Easily integrate ASCII flavoured banners to your CLI tool",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,8 @@
     "javascript",
     "cli-library"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "James George <jamesgeorge998001@gmail.com>",
+  "license": "GNU GPL V3",
   "bugs": {
     "url": "https://github.com/jamesgeorge007/node-banner/issues"
   },
