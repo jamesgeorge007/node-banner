@@ -1,3 +1,4 @@
+const assert = require('assert');
 const showBanner = require('.');
 
 describe('Normal usage', () => {
@@ -6,32 +7,32 @@ describe('Normal usage', () => {
 	});
 });
 
-describe('Only title is supplied', () => {
-	it('Fetch tagline content from package.json', async () => {
-		await showBanner('Title');
+describe('No arguments are suppleid', () => {
+	it('should fail', async () => {
+		try {
+			await showBanner();
+		} catch (err) {
+			assert(err);
+		}
 	});
 });
 
-describe('Only title is supplied leaving the tagline empty', () => {
-	it('Fetch tagline content from package.json', async () => {
-		await showBanner('Title', '');
+describe('Only title is provided', () => {
+	it('should fail', async () => {
+		try {
+			await showBanner('Title');
+		} catch (err) {
+			assert(err);
+		}
 	});
 });
 
-describe('Only tagline is supplied leaving the title empty', () => {
-	it('Fetch title content from package.json', async () => {
-		await showBanner('', 'Tagline');
-	});
-});
-
-describe('No arguments supplied', () => {
-	it('Fetch details from package.json', async () => {
-		await showBanner();
-	});
-});
-
-describe('Argument of type Number is provided', () => {
-	it('Fetch details from package.json', async () => {
-		await showBanner(1);
+describe('Only tagline is provided', () => {
+	it('should fail', async () => {
+		try {
+			await showBanner('', 'This is the tagline');
+		} catch (err) {
+			assert(err);
+		}
 	});
 });

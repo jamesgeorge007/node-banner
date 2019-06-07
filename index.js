@@ -4,27 +4,15 @@ const {promisify} = require('util');
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const readPkgUp = require('read-pkg-up');
 
 const printTitle = promisify(figlet);
-
-const fallBackCheck = async (text, field) => {
-	const {package: pkg} = await readPkgUp({cwd: __dirname});
-	if (
-		(typeof text === 'undefined' || typeof text !== 'string' || text === '') &&
-		Object.prototype.hasOwnProperty.call(pkg, field)
-	) {
-		text = pkg[field];
-	}
-
-	return text;
-};
 
 const showBanner = async (title, tagLine) => {
 	clear();
 
-	title = await fallBackCheck(title, 'name');
-	tagLine = await fallBackCheck(tagLine, 'description');
+	if (typeof title === 'undefined' || typeof tagLine === 'undefined' || title === '' || tagLine === '') {
+		throw new Error({name: 'TypeError', message: 'Both the fields are required'});
+	}
 
 	if (title === title.toLowerCase()) {
 		const index = title.indexOf('-');
