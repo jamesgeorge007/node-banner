@@ -1,6 +1,8 @@
-# node-banner
+<p align="center">
+	<img src="https://i.imgur.com/9CVBorr.png" alt="node-banner">
+</p>
 
-Easily integrate ASCII flavoured banners to your CLI tool.
+Easily integrate ASCII flavoured banner to your CLI utility.
 
 ## Usage
 
