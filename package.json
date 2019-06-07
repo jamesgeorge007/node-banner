@@ -1,10 +1,10 @@
 {
   "name": "node-banner",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Easily integrate ASCII flavoured banners to your CLI tool",
   "main": "index.js",
   "scripts": {
-    "lint": "xo --fix",
+    "lint": "xo --prettier --ignore=test.js --fix",
     "test": "mocha"
   },
   "repository": {
