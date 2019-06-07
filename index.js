@@ -32,8 +32,8 @@ const showBanner = async (title, tagLine) => {
 
 	try {
 		const data = await printTitle(title);
-		console.log(chalk.redBright(data));
-		console.log(chalk.yellow(' ' + tagLine));
+		console.log(chalk.bold.red(data));
+		console.log(chalk.bold.yellow(' ' + tagLine));
 	} catch (error) {
 		throw error;
 	}

@@ -21,7 +21,7 @@ const showBanner = require('node-banner');
 
 ```
 
-![Demo](https://i.imgur.com/F36n434.png)
+![Demo](https://i.imgur.com/btVf53N.png)
 
 ## API
 
