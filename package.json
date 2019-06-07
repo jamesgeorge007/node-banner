@@ -7,6 +7,10 @@
     "lint": "xo --prettier --ignore=test.js --fix",
     "test": "mocha"
   },
+  "files": [
+  	"index.js",
+  	"src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jamesgeorge007/node-banner.git"
