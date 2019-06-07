@@ -1,0 +1,30 @@
+{
+  "name": "node-banner",
+  "version": "1.0.0",
+  "description": "Easily integrate ASCII flavoured banners to your CLI tool",
+  "main": "index.js",
+  "scripts": {
+    "lint": "xo --fix",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesgeorge007/node-banner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesgeorge007/node-banner/issues"
+  },
+  "homepage": "https://github.com/jamesgeorge007/node-banner#readme",
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "xo": "^0.24.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "figlet": "^1.2.3"
+  }
+}
