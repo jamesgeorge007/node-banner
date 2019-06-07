@@ -23,6 +23,15 @@ const showBanner = require('node-banner');
 
 ![Demo](https://i.imgur.com/F36n434.png)
 
+## API
+
+### showBanner(title, tagLine?)
+
+- title: Name of the utility.
+- tagLine(optional): A suitable tagline.
+
+> Fetches the respective details from `package.json` if none was provided.
+
 ## Testing
 
 ```bash
