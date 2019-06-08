@@ -19,7 +19,7 @@ const showBanner = async (title, tagLine) => {
 		throw new Error('showBanner() expects to have both the arguments.');
 	}
 
-	if (title === title.toLowerCase()) {
+	if (title.toLowerCase().includes('cli') && title === title.toLowerCase()) {
 		const indexOfSeparator = title.indexOf('-');
 
 		if (!indexOfSeparator === -1) {
