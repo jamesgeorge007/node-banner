@@ -22,14 +22,14 @@ const showBanner = async (title, tagLine) => {
 	if (title.toLowerCase().includes('cli') && title === title.toLowerCase()) {
 		const indexOfSeparator = title.indexOf('-');
 
-		if (!indexOfSeparator === -1) {
+		if (indexOfSeparator === -1) {
+			title = title.charAt(0).toUpperCase() + title.substr(1, title.length);
+		} else {
 			title =
 				title.charAt(0).toUpperCase() +
 				title.substr(1, indexOfSeparator - 1) +
 				' ' +
 				title.substr(indexOfSeparator + 1, title.length).toUpperCase();
-		} else {
-			title = title.charAt(0).toUpperCase() + title.substr(1, title.length);
 		}
 	}
 
