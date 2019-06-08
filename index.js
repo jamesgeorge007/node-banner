@@ -11,7 +11,7 @@ const showBanner = async (title, tagLine) => {
 	clear();
 
 	if (typeof title === 'undefined' || typeof tagLine === 'undefined' || title === '' || tagLine === '') {
-		throw new Error({name: 'TypeError', message: 'Both the fields are required'});
+		throw new Error('showBanner() expects to have both the arguments.');
 	}
 
 	if (title === title.toLowerCase()) {

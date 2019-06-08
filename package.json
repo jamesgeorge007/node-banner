@@ -8,9 +8,9 @@
     "test": "mocha"
   },
   "files": [
-  	"index.js",
-	"index.d.ts",
-  	"src"
+    "index.js",
+    "index.d.ts",
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -37,7 +37,6 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
-    "figlet": "^1.2.3",
-    "read-pkg-up": "^6.0.0"
+    "figlet": "^1.2.3"
   }
 }
