@@ -1,6 +1,6 @@
 {
   "name": "node-banner",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "description": "Easily integrate ASCII flavoured banners to your CLI tool",
   "main": "index.js",
   "scripts": {

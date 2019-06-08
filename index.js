@@ -10,7 +10,12 @@ const printTitle = promisify(figlet);
 const showBanner = async (title, tagLine) => {
 	clear();
 
-	if (typeof title === 'undefined' || typeof tagLine === 'undefined' || title === '' || tagLine === '') {
+	if (
+		typeof title === 'undefined' ||
+		typeof tagLine === 'undefined' ||
+		title === '' ||
+		tagLine === ''
+	) {
 		throw new Error('showBanner() expects to have both the arguments.');
 	}
 

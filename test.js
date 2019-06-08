@@ -12,7 +12,7 @@ describe('No arguments are suppleid', () => {
 		try {
 			await showBanner();
 		} catch (err) {
-			assert(err);
+			assert.equal(err, "Error: showBanner() expects to have both the arguments.");
 		}
 	});
 });
@@ -22,7 +22,7 @@ describe('Only title is provided', () => {
 		try {
 			await showBanner('Title');
 		} catch (err) {
-			assert(err);
+			assert.equal(err, "Error: showBanner() expects to have both the arguments.");
 		}
 	});
 });
@@ -32,7 +32,7 @@ describe('Only tagline is provided', () => {
 		try {
 			await showBanner('', 'This is the tagline');
 		} catch (err) {
-			assert(err);
+			assert.equal(err, "Error: showBanner() expects to have both the arguments.");
 		}
 	});
 });
