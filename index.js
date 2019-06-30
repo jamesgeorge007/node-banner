@@ -68,8 +68,8 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 		console.log(kleur.bold()[titleColor](data));
 
 		/*
-		* tagLine is optional.
-		*/
+		 * TagLine is optional.
+		 */
 
 		if (typeof tagLine !== 'undefined') {
 			console.log(kleur.bold().yellow(tagLine));
@@ -78,25 +78,24 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 		if (tagLine !== '') {
 			console.log(kleur.bold().yellow(tagLine));
 		}
-
 	} catch (error) {
 		throw error;
 	}
 };
 
 const showBannerSync = (title, tagLine, titleColor = 'red') => {
-	/* 
-	* Initialize script.
-	*/
+	/*
+	 * Initialize script.
+	 */
 	init(title, titleColor);
 
 	console.log(kleur.bold()[titleColor](figlet.textSync(title)));
 	console.log();
-	
+
 	/*
-	* tagLine is optional.
-	*/
-	
+	 * TagLine is optional.
+	 */
+
 	if (typeof tagLine !== 'undefined') {
 		console.log(kleur.bold().yellow(tagLine));
 	}
