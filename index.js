@@ -1,45 +1,46 @@
 'use strict';
 
-const { promisify } = require('util');
+const {promisify} = require('util');
 const kleur = require('kleur');
 const figlet = require('figlet');
 
 const printTitle = promisify(figlet);
 
 /*
-* All available colors as supported by kleur library.
-*/
+ * All available colors as supported by kleur library.
+ */
 
-const availableColors = ['black', 'red', 'green', 'yellow', 'blue','magenta', 'cyan','white' , 'gray', 'grey'];
+const availableColors = [
+	'black',
+	'red',
+	'green',
+	'yellow',
+	'blue',
+	'magenta',
+	'cyan',
+	'white',
+	'gray',
+	'grey'
+];
 
-/* 
-* Default values for font colors.
-*/
-const defaultOptions = {
-	'titleColor': 'red',
-	'tagLineColor': 'yellow'
-};
-
-
-const showBanner = async (title, tagLine, options) => {
+const init = (title, titleColor) => {
 	/*
-	* Clears the terminal screen.
-	*/
+	 * Clears the terminal screen.
+	 */
 	process.stdout.write('\u001B[2J\u001B[0;0f');
 
-	if (
-		typeof title === 'undefined' ||
-		title === ''
-	) {
+	if (typeof title === 'undefined' || title === '') {
 		throw new Error('The argument title is required.');
 	}
 
-	options = typeof options !== 'undefined' ? options : defaultOptions;
+	if (availableColors.indexOf(titleColor) === '-1') {
+		throw new RangeError('Title color out of range.');
+	}
 
 	/*
-	* Convert the title to uppercase if it was provided in lower case.
-	* It's just a convention to have the CLI capitalized.
-	*/
+	 * Convert the title to uppercase if it was provided in lower case.
+	 * It's just a convention to have the CLI capitalized.
+	 */
 
 	if (title.toLowerCase().includes('cli') && title === title.toLowerCase()) {
 		const indexOfSeparator = title.indexOf('-');
@@ -54,14 +55,35 @@ const showBanner = async (title, tagLine, options) => {
 				title.substr(indexOfSeparator + 1, title.length).toUpperCase();
 		}
 	}
+};
+
+const showBanner = async (title, tagLine, titleColor = 'red') => {
+	/*
+	 * Initialize script.
+	 */
+	init(title, titleColor);
 
 	try {
 		const data = await printTitle(title);
-		console.log(chalk.bold.red(data));
-		console.log(chalk.bold.yellow(' ' + tagLine));
+		console.log(kleur.bold[titleColor](data));
+		console.log(kleur.bold.yellow(' ' + tagLine));
 	} catch (error) {
 		throw error;
 	}
 };
 
-module.exports = showBanner;
+const showBannerSync = (title, tagLine, titleColor = 'red') => {
+	/*
+	 * Initialize script.
+	 */
+	init(title, titleColor);
+
+	console.log(kleur.bold[titleColor](figlet.textSync(title)));
+	console.log();
+	console.log(kleur.bold.yellow(figlet.textSync(tagLine)));
+};
+
+module.exports = {
+	showBanner,
+	showBannerSync
+};
