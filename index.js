@@ -33,7 +33,7 @@ const init = (title, titleColor) => {
 		throw new Error('The argument title is required.');
 	}
 
-	if (availableColors.indexOf(titleColor) === '-1') {
+	if (availableColors.indexOf(titleColor) === -1) {
 		throw new RangeError('Title color out of range.');
 	}
 
@@ -65,22 +65,45 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 
 	try {
 		const data = await printTitle(title);
-		console.log(kleur.bold[titleColor](data));
-		console.log(kleur.bold.yellow(' ' + tagLine));
+		console.log(kleur.bold()[titleColor](data));
+
+		/*
+		* tagLine is optional.
+		*/
+
+		if (typeof tagLine !== 'undefined') {
+			console.log(kleur.bold().yellow(tagLine));
+		}
+
+		if (tagLine !== '') {
+			console.log(kleur.bold().yellow(tagLine));
+		}
+
 	} catch (error) {
 		throw error;
 	}
 };
 
 const showBannerSync = (title, tagLine, titleColor = 'red') => {
-	/*
-	 * Initialize script.
-	 */
+	/* 
+	* Initialize script.
+	*/
 	init(title, titleColor);
 
-	console.log(kleur.bold[titleColor](figlet.textSync(title)));
+	console.log(kleur.bold()[titleColor](figlet.textSync(title)));
 	console.log();
-	console.log(kleur.bold.yellow(figlet.textSync(tagLine)));
+	
+	/*
+	* tagLine is optional.
+	*/
+	
+	if (typeof tagLine !== 'undefined') {
+		console.log(kleur.bold().yellow(tagLine));
+	}
+
+	if (tagLine !== '') {
+		console.log(kleur.bold().yellow(tagLine));
+	}
 };
 
 module.exports = {
