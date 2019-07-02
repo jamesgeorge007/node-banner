@@ -65,8 +65,8 @@ const init = (title, titleColor) => {
 
 /**
  * @param {String} title - Name of the utility
- * @param {String} [tagLine] - A suitable tagline 
- * @param {String} [titleColor] - A suitable title-color of choice 
+ * @param {String} [tagLine] - A suitable tagline
+ * @param {String} [titleColor] - A suitable title-color of choice
  *
  * returns {void}
  */
@@ -84,45 +84,16 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 		 * TagLine is optional.
 		 */
 
-		if (typeof tagLine !== 'undefined' && tagLine !== '') {
-			console.log(kleur.bold().yellow(tagLine));
+		if (
+			typeof tagLine !== 'undefined' &&
+			tagLine !== '' &&
+			tagLine.indexOf(' ') === -1
+		) {
+			console.log(' ' + kleur.bold().yellow(tagLine));
 		}
-
 	} catch (error) {
 		throw error;
 	}
 };
 
-/**
- * @param {String} title - Name of the utility
- * @param {String} [tagLine] - A suitable tagline 
- * @param {String} [titleColor] - A suitable title-color of choice 
- *
- * returns {void}
- */
-const showBannerSync = (title, tagLine, titleColor = 'red') => {
-	/*
-	 * Initialize script.
-	 */
-	init(title, titleColor);
-
-	console.log(kleur.bold()[titleColor](figlet.textSync(title)));
-	console.log();
-
-	/*
-	 * TagLine is optional.
-	 */
-
-	if (typeof tagLine !== 'undefined') {
-		console.log(kleur.bold().yellow(tagLine));
-	}
-
-	if (tagLine !== '') {
-		console.log(kleur.bold().yellow(tagLine));
-	}
-};
-
-module.exports = {
-	showBanner,
-	showBannerSync
-};
+module.exports = showBanner;
