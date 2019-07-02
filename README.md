@@ -25,10 +25,11 @@ const showBanner = require('node-banner');
 
 ## API
 
-### showBanner(title, tagLine)
+### showBanner(title, [tagLine], [titleColor])
 
 - title: Name of the utility.
 - tagLine: A suitable tagline.
+- titleColor: Override the default title-color that defaults to red.
 
 ## Testing
 
