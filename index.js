@@ -6,7 +6,7 @@ const figlet = require('figlet');
 
 const printTitle = promisify(figlet);
 
-/*
+/**
  * All available colors as supported by kleur library.
  */
 
@@ -23,8 +23,14 @@ const availableColors = [
 	'grey'
 ];
 
+/**
+ * @param {String} title - Name of the utility
+ * @param {String} [titleColor] - A suitable color of choice
+ *
+ * returns {void}
+ */
 const init = (title, titleColor) => {
-	/*
+	/**
 	 * Clears the terminal screen.
 	 */
 	process.stdout.write('\u001B[2J\u001B[0;0f');
@@ -37,7 +43,7 @@ const init = (title, titleColor) => {
 		throw new RangeError('Title color out of range.');
 	}
 
-	/*
+	/**
 	 * Convert the title to uppercase if it was provided in lower case.
 	 * It's just a convention to have the CLI capitalized.
 	 */
@@ -57,8 +63,15 @@ const init = (title, titleColor) => {
 	}
 };
 
+/**
+ * @param {String} title - Name of the utility
+ * @param {String} [tagLine] - A suitable tagline 
+ * @param {String} [titleColor] - A suitable title-color of choice 
+ *
+ * returns {void}
+ */
 const showBanner = async (title, tagLine, titleColor = 'red') => {
-	/*
+	/**
 	 * Initialize script.
 	 */
 	init(title, titleColor);
@@ -67,22 +80,26 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 		const data = await printTitle(title);
 		console.log(kleur.bold()[titleColor](data));
 
-		/*
+		/**
 		 * TagLine is optional.
 		 */
 
-		if (typeof tagLine !== 'undefined') {
+		if (typeof tagLine !== 'undefined' && tagLine !== '') {
 			console.log(kleur.bold().yellow(tagLine));
 		}
 
-		if (tagLine !== '') {
-			console.log(kleur.bold().yellow(tagLine));
-		}
 	} catch (error) {
 		throw error;
 	}
 };
 
+/**
+ * @param {String} title - Name of the utility
+ * @param {String} [tagLine] - A suitable tagline 
+ * @param {String} [titleColor] - A suitable title-color of choice 
+ *
+ * returns {void}
+ */
 const showBannerSync = (title, tagLine, titleColor = 'red') => {
 	/*
 	 * Initialize script.
