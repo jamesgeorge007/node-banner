@@ -42,6 +42,20 @@ const init = (title, titleColor) => {
 	if (availableColors.indexOf(titleColor) === -1) {
 		throw new RangeError('Title color out of range.');
 	}
+};
+
+/**
+ * @param {String} title - Name of the utility
+ * @param {String} [tagLine] - A suitable tagline
+ * @param {String} [titleColor] - A suitable title-color of choice
+ *
+ * returns {void}
+ */
+const showBanner = async (title, tagLine, titleColor = 'red') => {
+	/**
+	 * Initialize script.
+	 */
+	init(title, titleColor);
 
 	/**
 	 * Convert the title to uppercase if it was provided in lower case.
@@ -61,20 +75,6 @@ const init = (title, titleColor) => {
 				title.substr(indexOfSeparator + 1, title.length).toUpperCase();
 		}
 	}
-};
-
-/**
- * @param {String} title - Name of the utility
- * @param {String} [tagLine] - A suitable tagline
- * @param {String} [titleColor] - A suitable title-color of choice
- *
- * returns {void}
- */
-const showBanner = async (title, tagLine, titleColor = 'red') => {
-	/**
-	 * Initialize script.
-	 */
-	init(title, titleColor);
 
 	try {
 		const data = await printTitle(title);
@@ -87,7 +87,7 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 		if (
 			typeof tagLine !== 'undefined' &&
 			tagLine !== '' &&
-			tagLine.indexOf(' ') === -1
+			tagLine.trim().length > 0
 		) {
 			console.log(' ' + kleur.bold().yellow(tagLine));
 		}

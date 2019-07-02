@@ -65,3 +65,10 @@ describe('All arguments are provided', () => {
 		assert.ok('Everything perfect');
 	});
 });
+
+describe('Random-CLI', () => {
+	it('capitalizes cli', async () => {
+		await showBanner('random-cli');
+		assert.ok('Everything perfect');
+	});
+});
