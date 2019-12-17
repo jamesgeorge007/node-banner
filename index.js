@@ -39,7 +39,7 @@ const init = (title, titleColor) => {
 		throw new Error('The argument title is required.');
 	}
 
-	if (availableColors.indexOf(titleColor) === -1) {
+	if (!availableColors.includes(titleColor)) {
 		throw new RangeError('Title color out of range.');
 	}
 };
