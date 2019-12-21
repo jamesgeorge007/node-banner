@@ -29,10 +29,10 @@ const availableColors = [
  *
  * returns {void}
  */
-const init = (title, titleColor) => {
-	/**
-	 * Clears the terminal screen.
-	 */
+const init = (title, titleColor, tagLineColor) => {
+	
+	// Clears the terminal screen.
+	
 	process.stdout.write('\u001B[2J\u001B[0;0f');
 
 	if (typeof title === 'undefined' || title === '') {
@@ -41,6 +41,10 @@ const init = (title, titleColor) => {
 
 	if (!availableColors.includes(titleColor)) {
 		throw new RangeError('Title color out of range.');
+	}
+
+	if (!availableColors.includes(tagLineColor)) {
+		throw new RangeError('Tagline color out of range.');
 	}
 };
 
@@ -51,11 +55,11 @@ const init = (title, titleColor) => {
  *
  * returns {void}
  */
-const showBanner = async (title, tagLine, titleColor = 'red') => {
-	/**
-	 * Initialize script.
-	 */
-	init(title, titleColor);
+const showBanner = async (title, tagLine, titleColor = 'red', tagLineColor='yellow') => {
+	
+	// Initialize script.
+	
+	init(title, titleColor, tagLineColor);
 
 	/**
 	 * Convert the title to uppercase if it was provided in lower case.
@@ -80,16 +84,14 @@ const showBanner = async (title, tagLine, titleColor = 'red') => {
 		const data = await printTitle(title);
 		console.log(kleur.bold()[titleColor](data));
 
-		/**
-		 * TagLine is optional.
-		 */
+		// TagLine is optional.
 
 		if (
 			typeof tagLine !== 'undefined' &&
 			tagLine !== '' &&
 			tagLine.trim().length > 0
 		) {
-			console.log(' ' + kleur.bold().yellow(tagLine));
+			console.log(' ' + kleur.bold()[tagLineColor](tagLine));
 		}
 	} catch (error) {
 		throw error;
