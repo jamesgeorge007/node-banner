@@ -4,7 +4,8 @@
   "description": "Easily integrate ASCII flavoured banners to your CLI tool",
   "main": "index.js",
   "scripts": {
-    "lint": "xo --prettier --ignore=test.js --fix",
+    "lint": "xo --prettier --ignore=test.js",
+    "lint:fix": "xo --prettier --ignore=test.js --fix",
     "test": "mocha"
   },
   "files": [
