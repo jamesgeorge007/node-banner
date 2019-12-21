@@ -55,7 +55,7 @@ const init = (title, titleColor, tagLineColor) => {
  *
  * returns {void}
  */
-const showBanner = async (title, tagLine, titleColor = 'red', tagLineColor='yellow') => {
+const showBanner = async (title, tagLine, titleColor = 'red', tagLineColor = 'yellow') => {
 	
 	// Initialize script.
 	

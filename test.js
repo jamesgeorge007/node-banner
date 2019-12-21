@@ -59,6 +59,16 @@ describe('Throws an error for out of range titleColor', () => {
 	});
 });
 
+describe('Throws an error for out of range tagLineColor', () => {
+	it('it should fail', async () => {
+		try {
+			await showBanner('Title', '', 'red', 'purple');
+		} catch (err) {
+			assert.equal(err, 'RangeError: Tagline color out of range.');
+		}
+	});
+});
+
 describe('All arguments are provided', () => {
 	it('should work absolutely fine', async () => {
 		await showBanner('Title', 'This is the tagline', 'blue');
