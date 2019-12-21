@@ -25,14 +25,14 @@ const availableColors = [
 
 /**
  * @param {String} title - Name of the utility
- * @param {String} [titleColor] - A suitable color of choice
+ * @param {String} [titleColor] - A suitable color of choice for title
+ * @param {String} [tagLineColor] - A suitable color of choice for tagline
  *
  * returns {void}
  */
 const init = (title, titleColor, tagLineColor) => {
-	
 	// Clears the terminal screen.
-	
+
 	process.stdout.write('\u001B[2J\u001B[0;0f');
 
 	if (typeof title === 'undefined' || title === '') {
@@ -52,13 +52,18 @@ const init = (title, titleColor, tagLineColor) => {
  * @param {String} title - Name of the utility
  * @param {String} [tagLine] - A suitable tagline
  * @param {String} [titleColor] - A suitable title-color of choice
+ * @param {String} [tagLineColor] - A suitable tagline-color of choice
  *
  * returns {void}
  */
-const showBanner = async (title, tagLine, titleColor = 'red', tagLineColor = 'yellow') => {
-	
+const showBanner = async (
+	title,
+	tagLine,
+	titleColor = 'red',
+	tagLineColor = 'yellow'
+) => {
 	// Initialize script.
-	
+
 	init(title, titleColor, tagLineColor);
 
 	/**
