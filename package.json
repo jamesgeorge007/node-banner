@@ -4,8 +4,9 @@
   "description": "Easily integrate ASCII flavoured banners to your CLI tool",
   "main": "index.js",
   "scripts": {
-    "lint": "xo --prettier --ignore=test.js",
-    "lint:fix": "xo --prettier --ignore=test.js --fix",
+    "format:check": "prettier --check *.js",
+    "format": "prettier --write *.js",
+    "pretest": "npm run format:check",
     "test": "mocha"
   },
   "files": [
@@ -33,7 +34,7 @@
   "homepage": "https://github.com/jamesgeorge007/node-banner#readme",
   "devDependencies": {
     "mocha": "^6.1.4",
-    "xo": "^0.24.0"
+    "prettier": "^2.0.5"
   },
   "dependencies": {
     "figlet": "^1.2.3",
