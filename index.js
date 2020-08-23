@@ -20,7 +20,7 @@ const availableColors = [
   "cyan",
   "white",
   "gray",
-  "grey"
+  "grey",
 ];
 
 /**
