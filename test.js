@@ -1,84 +1,66 @@
-const assert = require('assert');
-const showBanner = require('.');
+const assert = require("assert");
+const showBanner = require(".");
 
-describe('Normal usage', () => {
-	it('Displays the banner', async () => {
-		await showBanner('Title', 'This is the tagline');
-		assert.ok('Works out of the box');
-	});
-});
+describe("node-banner", () => {
+  it("should display the banner", async () => {
+    await showBanner("Title", "This is the tagline");
+    assert.ok("Works fine");
+  });
 
-describe('No arguments are suppleid', () => {
-	it('should fail', async () => {
-		try {
-			await showBanner();
-		} catch (err) {
-			assert.equal(err, "Error: The argument title is required.");
-		}
-	});
-});
+  it("should fail if no arguments were supplied", async () => {
+    try {
+      await showBanner();
+    } catch (err) {
+      assert.equal(err, "Error: The argument title is required.");
+    }
+  });
 
-describe('Only title is provided', () => {
-	it('should work fine', async () => {
-		await showBanner('Title');
-		assert.ok('tagLine is optional');
-	});
-});
+  it("should work fine if only the title was provided", async () => {
+    await showBanner("Title");
+    assert.ok("tagLine is optional");
+  });
 
-describe('Only tagline is provided', () => {
-	it('should fail', async () => {
-		try {
-			await showBanner('', 'This is the tagline');
-		} catch (err) {
-			assert.equal(err, "Error: The argument title is required.");
-		}
-	});
-});
+  it("should fail if the title was not provided", async () => {
+    try {
+      await showBanner("", "This is the tagline");
+    } catch (err) {
+      assert.equal(err, "Error: The argument title is required.");
+    }
+  });
 
-describe('Customized title color', () => {
-	it('should work absolutely fine', async () => {
-		await showBanner('Title', '', 'magenta');
-		assert.ok('tagLine is optional');
-	});
-});
+  it("should work fine with a custom title-color", async () => {
+    await showBanner("Title", "", "magenta");
+    assert.ok("tagLine is optional");
+  });
 
-describe('Ignores empty tagLine', () => {
-	it('avoids the tagline', async () => {
-		await showBanner('Title', ' ', 'blue');
-		assert.ok('whitespaces are ignored');
-	});
-});
+  it("ignores whitespaces supplied in place of the tagline", async () => {
+    await showBanner("Title", " ", "blue");
+    assert.ok("whitespaces are ignored");
+  });
 
-describe('Throws an error for out of range titleColor', () => {
-	it('it should fail', async () => {
-		try {
-			await showBanner('Title', '', 'purple');
-		} catch (err) {
-			assert.equal(err, 'RangeError: Title color out of range.');
-		}
-	});
-});
+  it("it should fail if an unrecognized title-color is supplied", async () => {
+    try {
+      await showBanner("Title", "", "purple");
+    } catch (err) {
+      assert.equal(err, "RangeError: Title color out of range.");
+    }
+  });
 
-describe('Throws an error for out of range tagLineColor', () => {
-	it('it should fail', async () => {
-		try {
-			await showBanner('Title', '', 'red', 'purple');
-		} catch (err) {
-			assert.equal(err, 'RangeError: Tagline color out of range.');
-		}
-	});
-});
+  it("it should fail if an unrecognized tagline-color is supplied", async () => {
+    try {
+      await showBanner("Title", "", "red", "purple");
+    } catch (err) {
+      assert.equal(err, "RangeError: Tagline color out of range.");
+    }
+  });
 
-describe('All arguments are provided', () => {
-	it('should work absolutely fine', async () => {
-		await showBanner('Title', 'This is the tagline', 'blue');
-		assert.ok('Everything perfect');
-	});
-});
+  it("should work fine if all the arguments are supplied", async () => {
+    await showBanner("Title", "This is the tagline", "blue");
+    assert.ok("Works fine");
+  });
 
-describe('Random-CLI', () => {
-	it('capitalizes cli', async () => {
-		await showBanner('random-cli');
-		assert.ok('Everything perfect');
-	});
+  it("capitalizes cli", async () => {
+    await showBanner("mevn-cli");
+    assert.ok("Works fine");
+  });
 });
