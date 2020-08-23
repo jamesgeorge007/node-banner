@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.com/jamesgeorge007/node-banner.svg?branch=master)](https://travis-ci.com/jamesgeorge007/node-banner)
-
 <p align="center">
 	<img src="https://i.imgur.com/9CVBorr.png" alt="node-banner">
 </p>
+
+[![Build Status](https://travis-ci.com/jamesgeorge007/node-banner.svg?branch=master)](https://travis-ci.com/jamesgeorge007/node-banner)
 
 Easily integrate ASCII flavoured banner to your CLI utility.
 
