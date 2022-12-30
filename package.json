@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/jamesgeorge007/node-banner#readme",
   "devDependencies": {
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "prettier": "^2.0.5"
   },
   "dependencies": {
